@@ -1,4 +1,4 @@
-package com.arrcen.autodb.model;
+package com.bzrrr.autodb.model;
 
 import lombok.Getter;
 import lombok.Setter;

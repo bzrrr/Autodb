@@ -1,14 +1,14 @@
-package com.arrcen.autodb.converter;
+package com.bzrrr.autodb.converter;
 
-import com.arrcen.autodb.anno.AutoField;
-import com.arrcen.autodb.anno.AutoInit;
-import com.arrcen.autodb.config.AutoDbProperties;
-import com.arrcen.autodb.dao.DbDao;
-import com.arrcen.autodb.model.FieldConfig;
-import com.arrcen.autodb.model.Invoker;
-import com.arrcen.autodb.model.TableConfig;
-import com.arrcen.autodb.utils.ClassScaner;
-import com.arrcen.autodb.utils.ColumnUtil;
+import com.bzrrr.autodb.anno.AutoField;
+import com.bzrrr.autodb.anno.AutoInit;
+import com.bzrrr.autodb.config.AutoDbProperties;
+import com.bzrrr.autodb.dao.DbDao;
+import com.bzrrr.autodb.model.FieldConfig;
+import com.bzrrr.autodb.model.Invoker;
+import com.bzrrr.autodb.model.TableConfig;
+import com.bzrrr.autodb.utils.ClassScaner;
+import com.bzrrr.autodb.utils.ColumnUtil;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;

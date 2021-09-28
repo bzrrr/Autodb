@@ -1,4 +1,4 @@
-package com.arrcen.autodb.anno;
+package com.bzrrr.autodb.anno;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

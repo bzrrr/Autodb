@@ -8,9 +8,9 @@
         <version>2.3.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.arrcen</groupId>
+    <groupId>com.bzrrr</groupId>
     <artifactId>autodb</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
     <name>autodb</name>
     <description>auto create table</description>
     <properties>
@@ -108,6 +108,6 @@
         </plugins>
     </build>
 
-    
+
 
 </project>

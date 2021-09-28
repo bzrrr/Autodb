@@ -1,4 +1,4 @@
-package com.arrcen.autodb.config;
+package com.bzrrr.autodb.config;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.context.properties.ConfigurationProperties;

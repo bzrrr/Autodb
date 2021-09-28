@@ -1,7 +1,7 @@
-package com.arrcen.autodb.dao;
+package com.bzrrr.autodb.dao;
 
-import com.arrcen.autodb.model.FieldConfig;
-import com.arrcen.autodb.model.TableConfig;
+import com.bzrrr.autodb.model.FieldConfig;
+import com.bzrrr.autodb.model.TableConfig;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package com.arrcen.autodb.utils;
+package com.bzrrr.autodb.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

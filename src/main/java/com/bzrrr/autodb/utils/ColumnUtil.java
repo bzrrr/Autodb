@@ -1,6 +1,6 @@
-package com.arrcen.autodb.utils;
+package com.bzrrr.autodb.utils;
 
-import com.arrcen.autodb.anno.AutoField;
+import com.bzrrr.autodb.anno.AutoField;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
