@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.arrcen.autodb.config.AutoDbProperties,\
+  com.arrcen.autodb.converter.AutoDbConverter
