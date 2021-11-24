@@ -74,8 +74,8 @@ public interface DbDao {
     @Update("CREATE SEQUENCE \"${seqName}\" MINVALUE 1 MAXVALUE 999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE")
     void createTableSeq(String seqName);
 
-    @Update("ALTER TABLE \"${tableName}\" ADD CONSTRAINT ${uniqueName} UNIQUE (\"${uniqueName}\")")
-    void addTableUnique(@Param("tableName") String tableName, @Param("uniqueName") String uniqueName);
+    @Update("ALTER TABLE \"${tableName}\" ADD CONSTRAINT ${uniqueName} UNIQUE (\"${columnName}\")")
+    void addTableUnique(@Param("tableName") String tableName, @Param("columnName") String columnName, @Param("uniqueName") String uniqueName);
 
     @Update({"<script>",
             "ALTER TABLE \"${tableName}\" ADD CONSTRAINT ${uniqueGroup} UNIQUE ",

@@ -15,9 +15,11 @@ public class FieldConfig {
     private Integer length;
     private Integer precision;
     private Boolean nullable;
+    private String uniqueName;
     private Boolean unique;
     private String uniqueGroup;
     private String comment;
+    private String indexName;
     private Boolean indexable;
     private String[] indexGroup;
 }

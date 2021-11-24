@@ -1,5 +1,9 @@
 package com.bzrrr.autodb.converter;
 
+import com.baomidou.mybatisplus.annotation.KeySequence;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.bzrrr.autodb.anno.AutoField;
 import com.bzrrr.autodb.anno.AutoInit;
 import com.bzrrr.autodb.config.AutoDbProperties;
@@ -9,10 +13,6 @@ import com.bzrrr.autodb.model.Invoker;
 import com.bzrrr.autodb.model.TableConfig;
 import com.bzrrr.autodb.utils.ClassScaner;
 import com.bzrrr.autodb.utils.ColumnUtil;
-import com.baomidou.mybatisplus.annotation.KeySequence;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.google.common.collect.Lists;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -119,7 +119,7 @@ public class AutoDbConverter implements ApplicationContextAware {
         Map<String, List<String>> uniqueGroup = new HashMap<>();
         allFields.forEach(fieldConfig -> {
             if (fieldConfig.getUnique()) {
-                dao.addTableUnique(tableName, fieldConfig.getFieldName());
+                dao.addTableUnique(tableName, fieldConfig.getFieldName(), StringUtils.isNotBlank(fieldConfig.getUniqueName()) ? fieldConfig.getUniqueName() : fieldConfig.getFieldName());
             }
             String fieldUniqueGroup = fieldConfig.getUniqueGroup();
             if (com.baomidou.mybatisplus.core.toolkit.StringUtils.isNotBlank(fieldUniqueGroup)) {
@@ -143,7 +143,7 @@ public class AutoDbConverter implements ApplicationContextAware {
         Map<String, List<String>> indexGroup = new HashMap<>();
         allFields.forEach(fieldConfig -> {
             if (fieldConfig.getIndexable()) {
-                dao.addTableIndex(tableName, fieldConfig.getFieldName(), fieldConfig.getFieldName());
+                dao.addTableIndex(tableName, fieldConfig.getFieldName(), StringUtils.isNotBlank(fieldConfig.getIndexName()) ? fieldConfig.getIndexName() : fieldConfig.getFieldName());
             }
             String[] fieldIndexGroups = fieldConfig.getIndexGroup();
             if (fieldIndexGroups != null && fieldIndexGroups.length > 0) {
@@ -194,10 +194,17 @@ public class AutoDbConverter implements ApplicationContextAware {
     private List<FieldConfig> getAllFields(Class<?> clz, TableConfig tableConfig) {
         FieldConfig primary = new FieldConfig();
         List<FieldConfig> fieldConfigs = new ArrayList<>();
+        Map<String, Object> fieldMap = new HashMap<>();
 
         for (; clz != Object.class; clz = clz.getSuperclass()) {
             Field[] fields = clz.getDeclaredFields();
             for (Field field : fields) {
+                String fieldName = field.getName();
+                if (fieldMap.containsKey(fieldName)) {
+                    continue;
+                }else {
+                    fieldMap.put(fieldName, 1);
+                }
                 if (!ColumnUtil.getColumnEnabled(field)) {
                     continue;
                 }
@@ -225,8 +232,10 @@ public class AutoDbConverter implements ApplicationContextAware {
                         fieldConfig.setLength(autoField.length());
                     }
                     fieldConfig.setNullable(autoField.nullable());
+                    fieldConfig.setUniqueName(autoField.uniqueName());
                     fieldConfig.setUnique(autoField.unique());
                     fieldConfig.setUniqueGroup(autoField.uniqueGroup());
+                    fieldConfig.setIndexName(autoField.indexName());
                     fieldConfig.setIndexable(autoField.indexable());
                     fieldConfig.setIndexGroup(autoField.indexGroup());
                 } else {

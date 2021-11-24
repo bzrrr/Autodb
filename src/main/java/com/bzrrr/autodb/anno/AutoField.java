@@ -20,6 +20,8 @@ public @interface AutoField {
 
     int precision() default 0;
 
+    String uniqueName() default "";
+
     boolean unique() default false;
 
     String uniqueGroup() default "";
@@ -27,6 +29,8 @@ public @interface AutoField {
     boolean enabled() default true;
 
     String columnType() default "";
+
+    String indexName() default "";
 
     boolean indexable() default false;
 

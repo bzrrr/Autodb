@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.bzrrr</groupId>
     <artifactId>autodb</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.7</version>
     <name>autodb</name>
     <description>auto create table</description>
     <properties>
